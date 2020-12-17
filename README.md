@@ -2,6 +2,11 @@
 
 Disclaimer: This component was built by the community at large and is not an official Coveo JSUI Component. Use this component at your own risk.
 
+Options:
+- field: field you want to display on the result template
+- textColor: color of the text inside the badge, any valid CSS values such as "white" or hex like "#ffffff" is acceptable
+- backgroundColor: color of the background, any valid CSS values such as "white" or hex like "#ffffff" is acceptable
+
 ## Getting Started
 
 1. Install the component into your project.
