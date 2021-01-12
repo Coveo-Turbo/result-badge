@@ -43,7 +43,19 @@ export * from '@coveops/result-badge'
 
 > Disclaimer: Unpkg should be used for testing but not for production.
 
-5. Include the component in your template as follows:
+5. Include the CSS in the root `index.scss`
+
+```css
+@import '../../node_modules/@coveops/result-badge/dist/css/index.css';
+```
+
+Or for quick testing, you can add the styles from unpkg
+
+```css
+ <link rel="stylesheet" href="https://unpkg.com/@coveops/result-badge@latest/dist/css/index.css" />
+```
+
+6. Include the component in your template as follows:
 
 Place the component in your markup:
 
