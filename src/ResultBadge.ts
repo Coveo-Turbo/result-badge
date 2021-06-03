@@ -24,8 +24,8 @@ export class ResultBadge extends Component {
 
     static options: ResultBadgeOptions = {
         field: ComponentOptions.buildFieldOption({ defaultValue: '@syssource' }),
-        textColor: ComponentOptions.buildStringOption({ defaultValue: 'white' }),
-        backgroundColor: ComponentOptions.buildStringOption({ defaultValue: 'black' }),
+        textColor: ComponentOptions.buildStringOption({ defaultValue: '#FFF' }),
+        backgroundColor: ComponentOptions.buildStringOption({ defaultValue: '#000' }),
         shouldBeLocalized: ComponentOptions.buildBooleanOption({ defaultValue: false })
     };
 
