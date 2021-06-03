@@ -6,7 +6,8 @@ import {
     Dom,
     Utils,
     $$,
-    IQueryResult
+    IQueryResult,
+    l,
 } from 'coveo-search-ui';
 import { lazyComponent } from '@coveops/turbo-core';
 
@@ -14,6 +15,7 @@ export interface ResultBadgeOptions {
     field?: IFieldOption;
     textColor: string;
     backgroundColor: string;
+    shouldBeLocalized?: boolean;
 }
 
 @lazyComponent
@@ -21,9 +23,10 @@ export class ResultBadge extends Component {
     static ID = 'ResultBadge';
 
     static options: ResultBadgeOptions = {
-        field: ComponentOptions.buildFieldOption({defaultValue: '@syssource'}),
-        textColor: ComponentOptions.buildStringOption({defaultValue: 'white'}),
-        backgroundColor: ComponentOptions.buildStringOption({defaultValue: 'black'})
+        field: ComponentOptions.buildFieldOption({ defaultValue: '@syssource' }),
+        textColor: ComponentOptions.buildStringOption({ defaultValue: '#FFF' }),
+        backgroundColor: ComponentOptions.buildStringOption({ defaultValue: '#000' }),
+        shouldBeLocalized: ComponentOptions.buildBooleanOption({ defaultValue: false })
     };
 
     protected container: Dom;
@@ -47,7 +50,8 @@ export class ResultBadge extends Component {
     }
 
     protected render() {
-        const textValue = this.getValue(this.options.field);
+        let textValue = this.getValue(this.options.field);
+        if (this.options.shouldBeLocalized) { textValue = l(textValue); }
         this.element.innerText = textValue;
         this.element.style.color = this.options.textColor;
         this.element.style.backgroundColor = this.options.backgroundColor;

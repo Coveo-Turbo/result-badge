@@ -13,15 +13,15 @@
     "author": "",
     "license": "Apache-2.0",
     "dependencies": {
-        "@coveops/localization-manager": "^1.0.0",
-        "@coveops/turbo-core": "^1.1.1",
-        "coveo-search-ui": "^2.10081.5"
+        "@coveops/localization-manager": "^1.0.1",
+        "@coveops/turbo-core": "^1.2.1",
+        "coveo-search-ui": "^2.10085.2"
     },
     "types": "dist/index.d.ts",
     "files": [
         "dist"
     ],
     "devDependencies": {
-        "@coveops/cli": "^0.13.2"
+        "@coveops/cli": "^0.16.0"
     }
 }
