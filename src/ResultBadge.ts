@@ -45,7 +45,6 @@ export class ResultBadge extends Component {
 
     protected isAcceptedTab(): boolean {
         if (!this.options.tab) {
-            console.log('will display because tab');
             return true;
         }
 
@@ -54,7 +53,6 @@ export class ResultBadge extends Component {
 
     protected isRejectedTab(): boolean {
         if(!this.options.tabNot) {
-            console.log('nothing to reject');
             return false;
         }
 
