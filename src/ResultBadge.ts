@@ -8,6 +8,7 @@ import {
     $$,
     IQueryResult,
     l,
+    state,
 } from 'coveo-search-ui';
 import { lazyComponent } from '@coveops/turbo-core';
 
@@ -16,6 +17,8 @@ export interface ResultBadgeOptions {
     textColor: string;
     backgroundColor: string;
     shouldBeLocalized?: boolean;
+    tab?: string[];
+    tabNot?: string[];
 }
 
 @lazyComponent
@@ -26,7 +29,9 @@ export class ResultBadge extends Component {
         field: ComponentOptions.buildFieldOption({ defaultValue: '@syssource' }),
         textColor: ComponentOptions.buildStringOption({ defaultValue: '#FFF' }),
         backgroundColor: ComponentOptions.buildStringOption({ defaultValue: '#000' }),
-        shouldBeLocalized: ComponentOptions.buildBooleanOption({ defaultValue: false })
+        shouldBeLocalized: ComponentOptions.buildBooleanOption({ defaultValue: false }),
+        tab: ComponentOptions.buildListOption(),
+        tabNot: ComponentOptions.buildListOption(),
     };
 
     protected container: Dom;
@@ -36,6 +41,24 @@ export class ResultBadge extends Component {
         this.options = Coveo.ComponentOptions.initComponentOptions(element, ResultBadge, options);
 
         this.render()
+    }
+
+    protected isAcceptedTab(): boolean {
+        if (!this.options.tab) {
+            console.log('will display because tab');
+            return true;
+        }
+
+        return this.options.tab.includes(state(this.root, 't'));
+    }
+
+    protected isRejectedTab(): boolean {
+        if(!this.options.tabNot) {
+            console.log('nothing to reject');
+            return false;
+        }
+
+        return this.options.tabNot.includes(state(this.root, 't'));
     }
 
     protected getValue(field: IFieldOption): string {
@@ -50,6 +73,11 @@ export class ResultBadge extends Component {
     }
 
     protected render() {
+        if (!this.isAcceptedTab() || this.isRejectedTab()) {
+            this.element.setAttribute('style', 'display: none');
+            return;
+        }
+
         let textValue = this.getValue(this.options.field);
         if (this.options.shouldBeLocalized) { textValue = l(textValue); }
         this.element.innerText = textValue;

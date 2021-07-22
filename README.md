@@ -7,6 +7,8 @@ Options:
 - textColor: color of the text inside the badge, any valid CSS values such as "white" or hex like "#ffffff" is acceptable
 - backgroundColor: color of the background, any valid CSS values such as "white" or hex like "#ffffff" is acceptable
 - shouldBeLocalized: boolean that tells us whether we should attempt to localize the field name within the component. By default set to `false`.
+- tab: list of tabs to show the component in.
+- tabNot: list of tabs to not to show the component in.
 
 ## Getting Started
 
