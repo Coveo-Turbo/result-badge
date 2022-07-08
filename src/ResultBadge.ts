@@ -52,7 +52,7 @@ export class ResultBadge extends Component {
     }
 
     protected isRejectedTab(): boolean {
-        if(!this.options.tabNot) {
+        if (!this.options.tabNot) {
             return false;
         }
 
@@ -77,9 +77,14 @@ export class ResultBadge extends Component {
         }
 
         let textValue = this.getValue(this.options.field);
-        if (this.options.shouldBeLocalized) { textValue = l(textValue); }
-        this.element.innerText = textValue;
-        this.element.style.color = this.options.textColor;
-        this.element.style.backgroundColor = this.options.backgroundColor;
+        if (textValue) {
+            this.element.setAttribute('style', 'display: inline');
+            if (this.options.shouldBeLocalized) { textValue = l(textValue); }
+            this.element.innerText = textValue;
+            this.element.style.color = this.options.textColor;
+            this.element.style.backgroundColor = this.options.backgroundColor;
+        } else {
+            this.element.setAttribute('style', 'display: none');
+        }
     }
 };
